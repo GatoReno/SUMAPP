@@ -9,21 +9,16 @@ using Xamarin.Forms;
 
 namespace SUMATEAPPT2
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : MasterDetailPage
     {
-        public MainPage()
+        public   MainPage()
         {
             InitializeComponent();
+            this.Master = new master();
+            this.Detail = new NavigationPage(new detail());         
+            App.MasterD = this;
         }
+        
 
-        private async void btnClick(object sender, EventArgs e)
-
-        {
-            await DisplayAlert("mi cabecera","mi mensaje","ok");
-             Application.Current.MainPage = new NavigationPage(new Page1());
-        }
     }
 }

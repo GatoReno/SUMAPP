@@ -4,12 +4,16 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SUMATEAPPT2.Vista.Page1">
+             x:Class="SUMATEAPPT2.Vista.Photox">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="BIENVENIDO SUMATE!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="10,10,10,10">
+            <Button 
+            x:Name="btnTomarFoto" 
+            Text="Tomar Foto"/>
+            <Button 
+            x:Name="btnSeleccionarFoto" 
+            Text="Seleccionar Foto"/>
+            <Image x:Name="Imagen"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

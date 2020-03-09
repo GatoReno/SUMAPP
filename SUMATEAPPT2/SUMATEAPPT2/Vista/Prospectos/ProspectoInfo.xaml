@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.ProspectoInfo">
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,10">
+            <ActivityIndicator Color="Green"
+                               x:Name="Cator" IsRunning="true" />
+
+            <Image
+                Source="icon_fs.png"
+                                HorizontalOptions="CenterAndExpand"
+                HeightRequest="100"
+                />
+
+            <Label
+                x:Name="CatorText"
+                 TextColor="Green" />
+
+            <Label
+               Text="Nombre" 
+               TextColor="#006140"
+               FontSize="Medium"
+                   />
+            <Label
+                x:Name="Nombre" 
+                   />
+     
+
+            <Label
+                FontSize="Medium" 
+                TextColor="#006140"
+                Text= "Direccion"
+                    />
+            <Label
+                x:Name= "Direccion"
+                   />
+
+            <Label
+                FontSize="Medium" 
+                TextColor="#006140"
+                Text="Tipo producto"
+                    />
+            <Label
+                x:Name="Tipo_producto"
+                    />
+
+
+            <Label
+                FontSize="Medium" 
+                TextColor="#006140"
+                Text="Fecha tentativa"
+                  />
+            <Label
+                x:Name="Fecha_tentativa"
+                  />
+
+            <Label
+                FontSize="Medium" 
+                TextColor="#006140"
+                Text="Resolucion" 
+                   />
+
+            <Label
+                x:Name="Resolucion" 
+                   />
+
+            <Label
+                FontSize="Medium" 
+                TextColor="#006140"
+                Text="Modo en que se enteró"
+                  />
+            <Label
+                x:Name="Enterado"
+                  />
+
+            <Label
+                IsVisible="False"
+                x:Name="producto_"
+                  />
+            <Label
+                IsVisible="False"
+                x:Name="index_"
+                  />
+
+            <Button
+                x:Name="Telefono"
+                  TextColor="White"
+                                BackgroundColor="#4E8F75"
+
+                Clicked="Telefono_Clicked"
+                IsVisible="False"
+                 />
+
+            <Button
+                IsVisible="False"
+                Text="Agregar Prospecto"
+                 TextColor="White"
+                                BackgroundColor="#4E8F75"
+                x:Name="btnAddProspecto"
+                Clicked="btnAddProspecto_Clicked"
+                />
+
+            <ListView 
+                      IsVisible="False"
+                      x:Name="LPreProspecto"   
+                      ItemsSource="{Binding CProspecto}"
+                      ItemTapped="ProspectoList_ItemTapped"
+                  >
+                <!--Built in Cells-->
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <StackLayout    Orientation="Horizontal">
+
+                                <Label 
+                                Text="{Binding nombre}"
+                                    TextColor="#006140"
+                                Margin="0,10,0,10"
+                                />
+                                <Label 
+                                Text="{Binding fecha_tentativa}"
+                                    TextColor="#006140"
+                                Margin="0,10,0,10"
+                                />
+
+                                <Label 
+                                Text="{Binding tipo_producto}"
+                                Margin="0,10,0,10"
+                                    TextColor="#006140"
+                                />
+
+                            </StackLayout>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

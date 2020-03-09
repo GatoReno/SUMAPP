@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.Comunales.AddProspectoComunal">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10,10,10,10">
+         
+
+            <Entry
+                x:Name="Nombre"
+                 Placeholder=" Nombre de prospecto "
+                 />
+            <Entry
+                x:Name="AP"
+                 Placeholder=" Apellido Paterno "
+                 />
+            <Entry
+                x:Name="AM"
+                 Placeholder=" Apellido Materno "
+                 />
+
+
+            <Label Text="Fecha tentiva de visita" />
+            <DatePicker x:Name="Fecha"/>
+
+            <Entry
+                 Placeholder=" Calle "
+                x:Name="Calle"
+                 />
+
+            <Entry
+                 Placeholder=" Numero Int/Ext "
+                x:Name="Numero"
+                 />
+
+            <Entry
+                 Placeholder=" codigo postal "
+                x:Name="CP" 
+                />
+            <Entry
+                 Placeholder=" telefono "
+                x:Name="Telefono" 
+                />
+
+            <Entry
+                 Placeholder=" Activos /  Ingresos "
+                 />
+
+
+            <Picker x:Name="PickerEstados" 
+                    Title="Eliga Estado" 
+                  ItemsSource="{Binding Table}"
+                    ItemDisplayBinding="{Binding ESTADO}"
+                    SelectedIndex="{Binding CLAVE_E}"
+                    VerticalOptions="Center"   />
+            <Picker x:Name="PickerMunicipios" 
+                    IsVisible="False"
+                    Title="Eliga Municipio" 
+                  ItemsSource="{Binding Table}"
+                    ItemDisplayBinding="{Binding MUNICIPIO}"
+                    SelectedIndex="{Binding CLAVE_M}"
+                    VerticalOptions="Center"   />
+            <Picker x:Name="PickerColonias" 
+                    IsVisible="False"
+                    Title="Eliga Municipio" 
+                  ItemsSource="{Binding Table}"
+                    ItemDisplayBinding="{Binding COLONIA}"
+                    SelectedIndex="{Binding CLAVE_C}"
+                    VerticalOptions="Center"   />
+
+            <Entry
+                 Placeholder=" Actividad de negocio "
+                x:Name="ActividadNegocio"
+                 />
+
+            <Entry
+                 Placeholder=" Resolucion "
+                x:Name="Resolucion"
+                 />
+            <Entry
+                x:Name="ModoEnterado"
+                 Placeholder=" ¿ Cómo se enteró de la fianciera ? "
+                 />
+            <Button Clicked="Button_Clicked" Text="Agregar Prospecto"/>
+
+            <Label  
+                   x:Name="idx"   IsVisible="False"
+                 />
+            <Label
+                Text="estados_id"  IsVisible="False"
+                 />
+
+            <Label
+                x:Name="estados_id"  IsVisible="False"
+                 />
+            <Label
+                x:Name="estado_"  IsVisible="False"
+                 />
+            <Label
+              Text="municipio_id" IsVisible="False"
+                
+                />
+            <Label
+                x:Name="municipio_id"  IsVisible="False"
+                 />
+            <Label
+                x:Name="municipio_"  IsVisible="False"
+                 />
+            <Label
+              Text="colonia_id"  IsVisible="False"
+                 />
+            <Label
+                x:Name="colonia_id"  IsVisible="False"
+             
+                 />
+            <Label
+                x:Name="colonia_"  IsVisible="False"
+                 />
+            <Label
+                Text="producto_id"  IsVisible="False"
+                
+                />
+            <Label
+                x:Name="producto_id"  IsVisible="False"
+                 />
+            <Label
+                x:Name="producto_"  IsVisible="False"
+                 />
+            <Label
+                Text="cp_id"  IsVisible="False"
+                
+                />
+            <Label
+                x:Name="cp_id" IsVisible="False" 
+                 />
+            <Label
+                x:Name="cp_" IsVisible="False"
+                 />
+
+          
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

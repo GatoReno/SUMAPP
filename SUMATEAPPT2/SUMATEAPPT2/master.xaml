@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.master" Title="Master">
+
+    <StackLayout
+        BackgroundColor="#006140"
+        Orientation="Vertical"
+        >
+        <Image
+                Margin="0,40,0,20"
+                Source="icon_fs.png"
+                WidthRequest="50"
+                HeightRequest="50"/>
+        
+        <Button Text="Prospectos"
+            x:Name="btnPrimera"
+            Clicked="btnPrimera_Clicked" 
+             BackgroundColor="#4E8F75"
+                TextColor="White"
+           />
+
+        <Button Text="Visitas"
+            x:Name="btnVisita"
+           Clicked="btnVisita_Clicked"  BackgroundColor="#4E8F75"
+            TextColor="White"
+           />
+
+
+        <Button Text="Cerrar Sesion"
+            x:Name="btnCerrarSes"
+             Clicked="btnCerrarSesion_Clicked"
+             BackgroundColor="#4E8F75"
+                TextColor="White"
+           />
+    </StackLayout>
+  
+</ContentPage>

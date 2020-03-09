@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.Comunales.EvaluacionEcoComunal">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Margin="10,10,10,10">
+
+                <Label
+                Text="Cliente emprendedor"
+                   FontSize="Medium"
+                />
+
+                <Button
+                 Text="Cliente emprendedor"
+                 x:Name="btnEmprendedor"
+                 Clicked="btnEmprendedor_Clicked"
+                     TextColor="White"
+                                BackgroundColor="#4E8F75"
+
+                 />
+
+                <Button
+                Text="Evaluacion ecoomica"
+                x:Name="btnEvaluacion"
+                Clicked="btnEvaluacion_Clicked"
+                     TextColor="White"
+                                BackgroundColor="#4E8F75"
+
+                />
+
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

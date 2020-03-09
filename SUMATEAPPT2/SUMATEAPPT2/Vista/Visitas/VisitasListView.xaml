@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.VisitasListView">
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,20">
+            <Label
+                HorizontalOptions="Center"
+                Text="Visitas Agendadas"
+                />
+            <Label 
+                   x:Name="CatorT"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ActivityIndicator
+                x:Name="Cator"
+                IsRunning="true"/>
+            <ListView x:Name="ListVisitas"                      
+                      ItemsSource="{Binding json_}"
+                      ItemTapped="ListVisitas_ItemTapped"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell TextColor="Black" Text="{Binding fecha}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -7,14 +7,19 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SUMATEAPPT2.Vista
+namespace SUMATEAPPT2.Vista.Comunales
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class EvEcoComunal : ContentPage
     {
-        public Page1()
+        public EvEcoComunal()
         {
             InitializeComponent();
+        }
+
+        private void btnAddEvEcoCli_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

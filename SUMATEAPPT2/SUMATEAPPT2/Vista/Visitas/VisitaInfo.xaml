@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                          xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.VisitaInfo">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Margin="10,10,10,20">
+
+
+                <Label                
+                Text="Informacion de cita" 
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Large"
+                />
+                <Label Text="Calle"
+                   FontSize="Medium"
+                 />
+                <Label  
+                x:Name="Calle"/>
+                <Label Text="Colonia"
+                   FontSize="Medium"
+                x:Name="Colonia_lbl"/>
+                <Label   
+                x:Name="Colonia"/>
+                <Label Text="Municipio"
+                   FontSize="Medium"
+                x:Name="Municipio_lbl"/>
+                <Label  
+                x:Name="Municipio"/>
+                <Label Text="Ciudad"
+                   FontSize="Medium"
+                x:Name="Ciudad_lbl"/>
+                <Label  
+                x:Name="Ciudad"/>
+                <Label Text="Estado "
+                   FontSize="Medium"
+                x:Name="Estado_lbl"/>
+                <Label  
+                x:Name="Estado"/>
+                <Label Text="Codigo Postal"
+                   FontSize="Medium"
+                x:Name="CP_lbl"/>
+                <Label  
+                x:Name="CP"/>
+
+                <Label Text="Fecha"
+                   FontSize="Medium"
+                x:Name="Fecha_lbl"/>
+                <Label  
+                x:Name="Fecha"/>
+
+                <maps:Map x:Name="Mapx" HeightRequest="100"  />
+
+                <Button
+                Text="Contactar"
+                TextColor="White"
+                                BackgroundColor="#4E8F75"
+
+                />
+
+                <Button
+                TextColor="White"
+                Text="Cancelar"
+                                BackgroundColor="IndianRed"
+
+                />
+
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

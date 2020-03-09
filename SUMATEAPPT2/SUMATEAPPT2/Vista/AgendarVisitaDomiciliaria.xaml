@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:controls="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+              mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.AgendarVisitaDomiciliaria"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10,20,10,20">
+                <Label Text="Agendar visita domiciliaria"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                       />
+               
+
+                <Label FontSize="Micro"
+                       TextColor="PaleVioletRed"
+                       x:Name="ErrorLbl"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+                <Button
+                    FontSize="Micro"
+                    Text="Ocultar"
+                    x:Name="ErrorBtn"
+                    IsVisible="False"
+                    Clicked="ErrorBtn_Clicked" 
+                    TextColor="White"
+                    BackgroundColor="PaleVioletRed"
+                    WidthRequest="50" />
+                <Entry
+               x:Name="NCliente"
+                Placeholder="Nombre del cliente"
+               />
+                <DatePicker
+                x:Name="FechaVisita"
+                />
+                <Entry
+               x:Name="GrupoPertenece"
+                Placeholder="Grupo al que pertenece"
+               />
+                <Entry
+               x:Name="Secuencia"
+                Placeholder="Secuencia"
+               />
+                <Entry
+               x:Name="Asesor"
+                Placeholder="Asesor o Ejecutivo"
+               />
+                <Entry
+               x:Name="Sucursal"
+                Placeholder="Sucursal"
+               />
+
+
+                <Label 
+                Text="Dirección"
+                />
+                <Entry
+               x:Name="Calle"
+                Placeholder="Calle"
+               />
+                <Entry
+               x:Name="Num"
+                Placeholder="Número"
+               />
+                <Entry
+               x:Name="Colonia"
+                Placeholder="Colonia o localidad"
+               />
+
+
+                <Entry
+               x:Name="Municipio"
+                Placeholder="Municipio"
+               />
+
+
+                <Entry
+               x:Name="CP"
+                Placeholder="Código Postal"
+               />
+                <!-- Longitud: / Latitud:  -->
+
+                <Label Text="¿La  Dirección  coincide  con  la  reportada en  la  ficha  de datos del cliente? "/>
+                <Picker>
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Si</x:String>
+                            <x:String>No</x:String>
+
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+           
+                <Label 
+                
+                Text="Nota: en caso de no coincidir validar la causa y analizar la viabilidad del otorgamiento del crédito y en su caso actualizar ficha de datos"
+                FontSize = "10"
+                />
+
+                <maps:Map x:Name="Mapx" HeightRequest="300"  />
+
+
+                <Button x:Name="btnCamara" 
+                    Text="Foto de vivienda " 
+             
+                    Clicked="btnCamara_Clicked"
+                     />
+
+                <Image
+                    x:Name="imgx"
+                    WidthRequest="200"
+                   
+                    />
+
+
+                <Label
+                    HorizontalOptions="Center"
+                    FontSize="Medium"
+                    Text="Firma de prospecto cliente"
+                    />
+
+                <Button
+                    x:Name="signBtn"
+                    Text="Mostrar Firma"
+                    Clicked="signBtn_Clicked"/>
+                <Button
+                    x:Name="hidesignBtn"
+                    Text="Ocultar Firma"
+                    IsVisible="False"
+                    Clicked="hidesignBtn_Clicked"
+                    />
+
+                <controls:SignaturePadView 
+                             HeightRequest="400"
+                             x:Name           = "Sign"
+                             StrokeColor      = "Black"
+                             StrokeWidth      = "2"
+                             CaptionText      = "Firma de prospecto"
+                             CaptionTextColor = "#FFB718"
+                             CaptionFontSize  = "14"
+                             PromptText       = "..."
+                             PromptTextColor  = "#FFB718"
+                             PromptFontSize   = "14"
+                             BackgroundColor  = "#4E8F75" 
+                    IsVisible="False"
+                           />
+                <Entry
+                    x:Name="Observaciones"
+                Placeholder="Observaciones"/>
+                <Button
+                    Text="Agendar"
+                    x:Name="Agendarbtn"
+                    Clicked="Agendarbtn_Clicked"
+                     TextColor="White"
+                                BackgroundColor="#4E8F75"
+
+                    />
+
+                <Label
+                     x:Name="Latit"/>
+                <Label
+                     x:Name="Longit"/>
+       
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

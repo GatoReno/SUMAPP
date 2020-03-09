@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.detail">
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,10">
+            <Image
+                Margin="0,10,0,0"
+                Source="icon_fs.png"
+                WidthRequest="100"
+                HeightRequest="100"/>
+            <Label Text="Sumate Financiera"
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label x:Name="ErrorVisitis"
+                HorizontalOptions="CenterAndExpand" />
+
+            <ListView  x:Name="visitsView"
+                       ItemTapped="visitsView_ItemTapped"
+                       ItemsSource="{Binding Cvisita}" 
+                        CachingStrategy="RecycleElement"
+                 >
+                
+                <ListView.ItemTemplate>
+                    
+                    <DataTemplate>
+                        <ViewCell>
+                            <ScrollView>
+                                <StackLayout                                     Orientation="Horizontal">
+
+                                <Label 
+                                Text="{Binding id}"
+                                    TextColor="#006140"
+                                Margin="0,10,0,10"
+                                />
+                                <Label 
+                                Text="{Binding fecha}"
+                                    TextColor="#006140"
+                                Margin="0,10,0,10"
+                                />
+                                <Label 
+                                Text="{Binding cliente}"
+                                Margin="0,10,0,10"
+                                    TextColor="#006140"
+                                />
+                                <Label 
+                                Text="{Binding numero}"
+                                Margin="0,10,0,10"
+                                    TextColor="#006140"
+                                />
+                                <Label 
+                                Text="{Binding calle}"
+                                   Margin="0,10,0,10"
+                                    TextColor="#006140"
+                                />
+                                <Label 
+                                Text="{Binding colonia}"
+                                   Margin="0,10,0,10"
+                                    TextColor="#006140"
+                                />
+                                <Label 
+                                Text="{Binding municipio}"
+                                   Margin="0,10,0,10"
+                                    TextColor="#006140"
+                                />
+                                <Label 
+                                Text="{Binding ciudad}"
+                                   Margin="0,10,0,10"
+                                    TextColor="#006140"
+                                />
+                            </StackLayout>
+                                </ScrollView>
+                        </ViewCell>
+                        
+
+                   
+                    </DataTemplate>
+
+                   
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <!-- 
+            <Label
+                Text="estados_id"
+                IsVisible="False"
+                />
+
+            <Label
+                x:Name="estados_id"
+                IsVisible="False"
+                />
+            <Label
+              Text="municipio_id"
+                
+                />
+            <Label
+                x:Name="municipio_id"
+                IsVisible="False"
+                />
+            <Label
+              Text="colonia_id"
+                IsVisible="False"
+                />
+            <Label
+                x:Name="colonia_id"
+                IsVisible="False"
+                />
+            <Label
+                Text="producto_id"
+                
+                />
+            <Label
+                x:Name="producto_id"
+                IsVisible="False" 
+                />
+
+
+            <Picker x:Name="PickerProductos" 
+                      Title="Eliga un producto" 
+                    ItemsSource="{Binding Table}"
+                    ItemDisplayBinding="{Binding PRODUCTO}"
+                    SelectedIndex="{Binding CLAVE_P}"
+                    VerticalOptions="Center"   />
+            <Picker x:Name="PickerEstados" 
+                    Title="Eliga Estado" 
+                  ItemsSource="{Binding Table}"
+                    ItemDisplayBinding="{Binding ESTADO}"
+                    SelectedIndex="{Binding CLAVE_E}"
+                    VerticalOptions="Center"   />
+            <Picker x:Name="PickerMunicipios" 
+                    IsVisible="False"
+                    Title="Eliga Municipio" 
+                  ItemsSource="{Binding Table}"
+                    ItemDisplayBinding="{Binding MUNICIPIO}"
+                    SelectedIndex="{Binding CLAVE_M}"
+                    VerticalOptions="Center"   />
+            <Picker x:Name="PickerColonias" 
+                    IsVisible="False"
+                    Title="Eliga Municipio" 
+                  ItemsSource="{Binding Table}"
+                    ItemDisplayBinding="{Binding COLONIA}"
+                    SelectedIndex="{Binding CLAVE_C}"
+                    VerticalOptions="Center"   />
+
+
+          
+            <Button x:Name="btnNotification" 
+                    Text="Send Notification  " 
+             
+                    Clicked="btnNotification_Clicked"
+                    HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <Button x:Name="btnConnectivity" 
+                    Text="Check Connectivity  " 
+             
+                    Clicked="btnConnectivity_Clicked"
+                    HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+        -->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

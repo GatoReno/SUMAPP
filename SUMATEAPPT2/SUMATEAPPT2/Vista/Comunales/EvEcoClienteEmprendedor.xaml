@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.Comunales.EvEcoClienteEmprendedor">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10,10,10,60">
+
+                <Label
+                Text="Evalaucion Cliente Emprendedor"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                />
+
+
+
+                <Label
+                Text="Ingreso semanal $"
+                />
+                <Entry
+                    x:Name="Ingresos_semanal"
+                 />
+
+                <Label
+                Text="Ingreso mensual $"
+                />
+                <Entry
+                    x:Name="Ingresos_mensual"
+                 />
+                <Label
+                Text="Ingresos propios (sueldo, pensión, etc.)"
+                />
+                <Entry
+                    x:Name="Ingresos_propios"
+                 />
+
+                <Label
+                Text="Aportaciones familiares (hijos,conyuge, etc.)"
+                />
+                <Entry
+                    x:Name="Aportaciones_familiares"
+                 />
+
+
+                <Label
+                Text="Otros ingresos y/o apoyos gubernamentales"
+                />
+                <Entry
+                    x:Name="OtrosIngresosGubernamentales"
+                 />
+
+                <Label
+                Text="Total ingresos"
+                />
+
+                <Label
+                 x:Name="TotalIngresos"
+                />
+                <Label />
+                
+                
+                <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+                <Label />
+
+                <Label
+                    HorizontalOptions="Center"   FontSize="Medium"
+                Text="Gastos Familiares"
+                />
+                <Entry
+                    x:Name="Gastos_Familiares"
+                 />
+
+
+
+                <Label
+                Text="Alimentacion (total gtos grales de la fam)"
+                />
+                <Entry
+                    x:Name="Alimentacion"
+                 />
+
+               
+                <Label
+                Text="Educacion y salud"
+                />
+
+                <Entry
+                 x:Name="educacionysalud"
+                />
+
+
+                <Label
+                Text="Transporte familiar "
+                />
+
+                <Entry
+                 x:Name="TrasporteFam"
+                />
+
+                <Label
+                Text="Gtos.Grales.De Fam.** "
+                />
+
+                <Entry
+                 x:Name="GastosGeneralesFam"
+                />
+
+
+                <Label
+                Text="Gas"
+                />
+
+                <Entry
+                 x:Name="gas"
+                />
+
+                <Label
+                Text="Renta"
+                />
+
+                <Entry
+                 x:Name="renta"
+                />
+
+
+                <Label
+                Text="Luz, Agua y Predial"
+                />
+
+                <Entry
+                 x:Name="luzaguapredial"
+                />
+
+
+                <Label
+                Text="Telefono fijo/celular"
+                />
+
+                <Entry
+                 x:Name="telefono"
+                />
+
+
+
+
+                <Label
+                Text="Total de gastos familiares"
+                />
+
+                <Entry
+                 x:Name="Totaldegastosfamiliares"
+                />
+
+
+                <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+                <Label />
+
+
+                <Label
+                    HorizontalOptions="Center"   FontSize="Medium"
+                Text="Capacidad de Pago"
+                />
+
+                <Label
+                x:Name="Capacidad_Pago"
+                    HorizontalOptions="Center"
+                />
+
+
+                <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+                <Label />
+
+
+                
+
+                <Label
+                Text="Pago mensual a otras microfinancieras"
+                />
+
+                <Entry
+                 x:Name="PagoMensualOtrasFinancieras"
+                />
+
+
+                
+                <Label
+                Text="Cuota que cliente puede pagar (MENSUAL)"
+                />
+
+                <Entry
+                 x:Name="CuotaClientePuedePagar"
+                />
+
+
+             
+
+                <Label
+                Text="Capacidad de pago considerando pago en otras microfinancieras:"
+                />
+
+
+                <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+                <Label />
+
+
+                <Label
+                    HorizontalOptions="Center"   FontSize="Medium"
+                Text="BG DE LA FAMIEMPRESA"
+                />
+
+
+                <Label
+                Text="Efectivo para inicio de negocio"
+                />
+
+             
+                <Entry
+                    HorizontalOptions="Fill"
+                    Placeholder="Activo"  
+                    x:Name="Efectivo_Negocio_activo"
+                />
+
+                <Entry
+                    Placeholder="Pasivo"                    
+                    HorizontalOptions="Fill"
+                    x:Name="Efectivo_Negocio_pasivo"
+                />
+
+
+                <Label
+                Text="Ahorro  "
+                />
+
+
+                <Entry
+                    HorizontalOptions="Fill"
+                    Placeholder="Activo"  
+                    x:Name="Ahorro_activo"
+                />
+
+                <Entry
+                    Placeholder="Pasivo"                    
+                    HorizontalOptions="Fill"
+                    x:Name="Ahorro_pasivo"
+                />
+
+
+
+                <Label
+                Text="Cuentas por pagar  "
+                />
+
+
+                <Entry
+                    HorizontalOptions="Fill"
+                                       Placeholder="Activo"  
+
+                    x:Name="Cuentasporpagar_activo"
+                />
+
+                <Entry
+                    Placeholder="Pasivo"                    
+                    HorizontalOptions="Fill"
+                    x:Name="Cuentasporpagar_pasivo"
+                />
+
+                <Label
+                Text="Deuda(s) total(es) en otras Instituciones de crédito 	  "
+                />
+
+
+                <Entry
+                    HorizontalOptions="Fill"
+                    Placeholder="Activo"  
+                    x:Name="deudas_activo"
+                />
+
+                <Entry
+                    Placeholder="Pasivo"                    
+                    HorizontalOptions="Fill"
+                    x:Name="deudas_pasivo"
+                />
+
+                <Label
+                Text="Tandas  "
+                />
+
+
+                <Entry
+                    HorizontalOptions="Fill"
+                    Placeholder="Activo"  
+                    x:Name="tandas_activo"
+                />
+
+                <Entry
+                    Placeholder="Pasivo"                    
+                    HorizontalOptions="Fill"
+                    x:Name="tandas_pasivo"
+                />
+
+
+                <Label
+                Text="Otro  "
+                />
+
+
+                <Entry
+                    HorizontalOptions="Fill"
+                    Placeholder="Activo"  
+                    x:Name="otros_activo"
+                />
+
+                <Entry
+                    Placeholder="Pasivo"                    
+                    HorizontalOptions="Fill"
+                    x:Name="otros_pasivo"
+                />
+
+                <Label
+                    Text="Total de Activos"
+                    x:Name="TotalActivos"/>
+
+                <Label
+                    Text="Total Pasivos"
+                    x:Name="TotalPasivos"/>
+
+                <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+                <Label />
+
+
+                
+                 
+                <Label
+                    Text="Bienes propios	"
+                   />
+                <Entry
+                    Placeholder=" "                    
+                      x:Name="BienesPropios"
+                />
+
+
+
+                <Label
+                    Text="Número de hijos que trabajan"
+                     />
+                <Entry
+                  
+                    x:Name="numhijosquetrabajan"
+                />
+
+                 	
+
+
+
+                <Label
+                    Text="Número de hijos en edad escolar y/o dependientes"
+                     />
+                <Entry
+                  
+                    x:Name="numhijosedadEscolar"
+                />
+
+                <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+                <Label />
+
+
+                <Label
+                    HorizontalOptions="Center"   FontSize="Medium"
+                Text="Destino de la inversión, por ejemplo"
+                />
+
+      
+                <Label
+                    Text="Insumos"
+                    />
+                <Entry
+                  
+                    x:Name="Insumos"
+                />
+               
+
+                <Label
+                    Text="Permisos"
+                   />
+                <Entry
+                  
+                    x:Name="Permisos"
+                />
+                
+
+                <Label
+                    Text="Equipo"
+                    />
+                <Entry
+                  
+                    x:Name="Equipo"
+                />
+                
+
+                <Label
+                    Text="Otros"
+                     />
+                <Entry
+                  
+                    x:Name="OtrosInsumos"
+                />
+              
+
+                <Label
+                    Text=" "
+                    x:Name="TotalDestinos"/>
+
+
+                <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+                <Label />
+
+
+   
+ 
+                <Label
+                    Text="Monto solicitado por el cliente "
+                     />
+                <Entry
+                  
+                    x:Name="Monto_solicitado "
+                />
+                <Label
+                    Text="Monto máximo trabajado"
+                     />
+                <Entry
+                  
+                    x:Name="Monto_max_trabajado "
+                />
+                <Label
+                    Text="Plazo propuesto por el cliente"
+                     />
+                <Entry
+                  
+                    x:Name="Lapzo_propuesto "
+                />
+
+
+                <Label
+                    Text="  Monto propuesto "
+                     />
+                <Entry
+                  
+                    x:Name="Monto_propuesto "
+                />
+
+                <Label
+                    Text="Cuota propuesta(mensual) "
+                     />
+                <Entry
+                  
+                    x:Name="Cuota_propuesta_mensual"
+                />
+
+                <Label
+                    Text="Cobertura de cuota"
+                     />
+                <Label
+                    x:Name="Cobertura_de_cuota"
+                     />
+
+
+                <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+                <Label />
+
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"  
+                    Text=" Describa el proyecto del negocio a iniciar.	"
+                     />
+                <Entry
+                    x:Name="Describciones"
+                     />
+
+
+
+                <Button
+                      BackgroundColor="#4E8F75"
+                        TextColor="White"
+                    x:Name="btnAddEvEcoCli"
+                    Text="Agregar Evaluación"
+                    Clicked="btnAddEvEcoCli_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

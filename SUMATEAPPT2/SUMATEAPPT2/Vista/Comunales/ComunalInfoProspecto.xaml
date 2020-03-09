@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.Comunales.ComunalInfoProspecto">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10,10,10,10">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+        
+
+
+            <Label 
+                   Text="Welcome to Xamarin.Forms!"
+                   x:Name="idx"
+                   IsVisible="False"                 
+                   Grid.Row="0" Grid.Column="0"             
+                />
+
+            <Label 
+                   Text="Información de Prospecto" 
+                   Grid.Row="0" Grid.Column="0" 
+                 />
+                
+            <Label   
+                   Grid.Row="1" Grid.Column="0" 
+                   Text="Nombre"        
+                 />
+                
+            <Label     
+                   Grid.Row="2" Grid.Column="0" 
+                   x:Name="nombre"
+                  />
+
+            <Label 
+                   Grid.Row="3" Grid.Column="0" 
+                   Text="Fecha tentativa de visita domiciliaria"
+                  />
+
+            <Label                                 
+                   Grid.Row="4" Grid.Column="0" 
+                   x:Name="fecha_visita_tentativa"
+                  />
+
+            <Label Grid.Row="5" Grid.Column="0" 
+                   Text="Dirección"
+                  />
+
+            <Label Grid.Row="6" Grid.Column="0" 
+                   x:Name="direccion"
+                  />
+
+            <Label     
+                   Grid.Row="7" Grid.Column="0" 
+                   Text="Actividad de negocio"
+                  />
+            
+            <Label     
+                   Grid.Row="8" Grid.Column="0" 
+                   x:Name="actividad_negocio"
+                   />
+
+            <Label     
+                    Grid.Row="9" Grid.Column="0" 
+                    Text="Telefono"
+                 />
+                
+                
+            <Label    
+                Grid.Row="10" Grid.Column="0" 
+                x:Name="telefono"
+              />
+
+
+            <Label    
+                    Grid.Row="1" Grid.Column="1" 
+                    Text="Carta Pendiente"  
+                    x:Name="Carta_"
+                />
+                                
+            <Button
+                 TextColor="White"
+                                BackgroundColor="#4E8F75"
+                    Text="Carta jurada"
+                    Grid.Row="2" Grid.Column="1" 
+                x:Name="btnCartaJurada"
+                Clicked="btnCartaJurada_Clicked"
+                 />
+
+                    <Label    
+                    Grid.Row="3" Grid.Column="1" 
+                 
+                    x:Name="Evaluacion_"
+                />
+
+                  <Button
+                       TextColor="White"
+                                BackgroundColor="#4E8F75"
+                    Text="Evaluación Economica"
+                    Grid.Row="4" Grid.Column="1" 
+                      x:Name="btnEvEco"
+                      Clicked="btnEvEco_Clicked"
+                 />
+
+
+
+                    <Label    
+                    Grid.Row="5" Grid.Column="1" 
+                     
+                    x:Name="Visita_"
+                />
+
+                    <Button
+                       TextColor="White"
+                                BackgroundColor="#4E8F75"
+                    Text="Visita Domiciliaria"
+                        x:Name="Visitabtn"
+                        Clicked="Visitabtn_Clicked"
+                    Grid.Row="6" Grid.Column="1" 
+                 />
+
+
+
+                    <Label    
+                    Grid.Row="7" Grid.Column="1" 
+                    Text="Visita Pendiente"  
+                    x:Name="Role_"
+                />
+
+                    <Button
+                       TextColor="White"
+                                BackgroundColor="#4E8F75"
+                    Text="Asignar role"
+                        x:Name="Rolbtn"
+                        Clicked="Rolbtn_Clicked"
+                    Grid.Row="8" Grid.Column="1" 
+                 />
+
+
+
+                </Grid>
+
+        </StackLayout>
+            </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

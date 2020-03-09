@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SUMATEAPPT2.Vista.Emprendedor.CartaJurada">
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,10">
+
+            <Label 
+                   Text="I. Yo :"
+                 />
+            <Label 
+                   x:Name="nombre"                                
+                 />
+            <Label 
+                  Text="Integrante del grupo :"
+                 />
+            <Label 
+                   x:Name="grupo"
+                 />
+            <Label 
+                   Text="_identificándome para los efectos de la presente DECLARACIÓN mediante Credencial de Elector emitida por el Instituto Federal Electoral o Instituto Nacional Electoral y bajo protesta de decir verdad y apercibido de las penas en que incurre quien declara con falsedad, manifiesto y reconozco que FINANCIERA SUMATE S.A. DE C.V. S.F.P.  me otorgó un crédito por un monto de "
+                 />
+            <Entry
+                Placeholder="(Describir cantidad con letra)"
+                   x:Name="cantidad"
+                 />
+            <Label 
+                  Text="Invertir en capital de trabajo para emprender un negocio de :"
+                 />
+
+            <Entry
+                Placeholder="(Definir la actividad o negocio  a emprender)"
+                   x:Name="Negocio"
+                 />
+
+            <Label 
+                  Text="mismo que se encontrará ubicado en : "
+                 />
+
+
+            <Entry
+                Placeholder="(Señalar ubicación del domicilio o negocio a emprender)"
+                   x:Name="Domocilio"
+                 />
+
+            <BoxView 
+                HeightRequest="1" 
+                BackgroundColor="Black" 
+                HorizontalOptions="FillAndExpand" />
+            <Label />
+
+
+
+            <Label 
+                  Text="Al incumplir este acuerdo, manifiesto mi entera disposición de someterme a las políticas de financiamiento de FINANCIERA SUMATE S.A. DE C.V. S.F.P. Sucursal :"
+                 />
+
+
+            <Entry
+                Placeholder="(Señalar ubicación del domicilio o negocio a emprender)"
+                   x:Name="Sucursal"
+                 />
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
