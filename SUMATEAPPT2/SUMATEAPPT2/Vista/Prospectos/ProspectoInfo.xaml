@@ -28,8 +28,7 @@
             <Label
                 x:Name="Nombre" 
                    />
-     
-
+ 
             <Label
                 FontSize="Medium" 
                 TextColor="#006140"

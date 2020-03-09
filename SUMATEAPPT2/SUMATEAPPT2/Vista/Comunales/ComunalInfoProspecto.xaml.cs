@@ -16,7 +16,8 @@ namespace SUMATEAPPT2.Vista.Comunales
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ComunalInfoProspecto : ContentPage
     {
-        public ComunalInfoProspecto(int id)
+        private string index_prospecto;
+        public ComunalInfoProspecto(int id,string index_pros)
         {
             InitializeComponent();
             idx.Text = id.ToString();
@@ -24,6 +25,7 @@ namespace SUMATEAPPT2.Vista.Comunales
             _ = GetVisita(id);
             _ = GetCartaJurada(id);
             _ = GetEvaluacionEco(id);
+            index_prospecto = index_pros;
         }
 
 
@@ -90,7 +92,8 @@ namespace SUMATEAPPT2.Vista.Comunales
         {
             var id = idx.Text;
             var name = nombre.Text;
-            await Navigation.PushAsync(new AsignarRol(id,name));
+            var index_ = index_prospecto;
+            await Navigation.PushAsync(new AsignarRol(id,name,index_));
         }
 
 
@@ -217,6 +220,53 @@ namespace SUMATEAPPT2.Vista.Comunales
 
         }
 
+
+        public async Task GetRolGrupo(int id)
+        {
+
+            HttpClient client = new HttpClient();
+            var uri = "http://192.168.90.165:55751/configuracion/getprospectorol/?id=" + id;
+            try
+            {
+                var response = await client.GetAsync(uri);
+                switch (response.StatusCode)
+                {
+                    case System.Net.HttpStatusCode.InternalServerError:
+                        Console.WriteLine("----------------------------------------------_____:Here status 500");
+
+
+                        break;
+
+
+                    case System.Net.HttpStatusCode.OK:
+                        Console.WriteLine("----------------------------------------------_____:Here status 200");
+
+                        HttpContent content = response.Content; //Roles
+                        string xjson = await content.ReadAsStringAsync();
+                        var json_ = JsonConvert.DeserializeObject<List<Roles>>(xjson);
+
+                        if (json_[0].nombre.Length > 0)
+                        {
+                            Role_.Text = json_[0].nombre;
+                        }
+                        else {
+
+                            Role_.Text = "Rol Pendiente";
+                        }
+
+
+                        break;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                await DisplayAlert("", "" + ex.ToString(), "ok");
+                return;
+            }
+
+        }
 
     }
 }

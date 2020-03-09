@@ -14,6 +14,7 @@
                 IsRunning="False"/>
 
             <Label Text="Asignar rol de grupo"
+                   x:Name="lbl1"
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" />
 
@@ -40,6 +41,7 @@
                 BackgroundColor="#4E8F75"
                 TextColor="White"
                 Text="Agregar rol"
+                Clicked="bntAddRol_Clicked"
                 />
 
             <Label

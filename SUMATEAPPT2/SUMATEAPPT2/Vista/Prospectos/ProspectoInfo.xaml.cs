@@ -16,10 +16,12 @@ namespace SUMATEAPPT2.Vista
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProspectoInfo : ContentPage
     {
+        public string id_index;
         public ProspectoInfo(string id)
         {
             InitializeComponent();
             _ = GetInfoProspecto(id);
+            id_index = id;
         }
 
         public async Task GetPreProspectos(string id) {
@@ -137,7 +139,7 @@ namespace SUMATEAPPT2.Vista
  
             var content_X = e.Item as CProspecto;
             var li = content_X.id_prospecto;
-            await Navigation.PushAsync(new ComunalInfoProspecto(content_X.id_prospecto));
+            await Navigation.PushAsync(new ComunalInfoProspecto(content_X.id_prospecto,content_X.index_prospecto));
         }
     }
 }
