@@ -6,7 +6,29 @@
              mc:Ignorable="d"
              x:Class="SUMATEAPPT2.Vista.Emprendedor.CartaJurada">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Margin="10,10,10,10">
+                <Label 
+                FontSize="Medium"
+                Text="Carta Jurada"                
+                />
+                <Label 
+                FontSize="Small"
+                Text="Si este usuario no aplica para la carta jurada oprima el boton 'No Aplica'"                
+                Margin="10,10,10,0"/>
+            
+            <Button
+                x:Name="NoAplica"
+                Text="No Aplica"
+                BackgroundColor="Red"
+                TextColor="White"
+                Clicked="NoAplica_Clicked"
+                />
+
+            <Label 
+                FontSize="Small"
+                Text="Formulario para carta Jurada"                
+                Margin="10,10,10,0"/>
 
             <Label 
                    Text="I. Yo :"
@@ -65,6 +87,16 @@
                  />
 
 
+
+            <Button
+                x:Name="AddCartabtn"
+                Text="Generar Carta Jurada"
+                Clicked="AddCartabtn_Clicked"
+              BackgroundColor="#4E8F75"
+                TextColor="White"
+                />
+
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

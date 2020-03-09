@@ -16,5 +16,15 @@ namespace SUMATEAPPT2.Vista.Emprendedor
         {
             InitializeComponent();
         }
+
+        private void NoAplica_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddCartabtn_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

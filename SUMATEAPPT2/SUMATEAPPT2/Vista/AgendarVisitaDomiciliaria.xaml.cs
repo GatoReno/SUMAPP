@@ -239,19 +239,7 @@ namespace SUMATEAPPT2.Vista
 
                             var idx = json.id_carta;
 
-                            
-
-                            /*
-                            var content_img = new MultipartFormDataContent();
-                            content_img.Add(new StreamContent(imgx.GetStream()), "\"file\"", $"\"{imgx.Path}\"");
-
-                            var httpClient = new System.Net.Http.HttpClient();
-                            var url = "http://upload.here.io/folder/subdir";
-                            var responseMsg = await httpClient.PostAsync(url, content_img);
-
-                            var remotePath = await responseMsg.Content.ReadAsStringAsync();
-
-                            */
+ 
 
                             await DisplayAlert("Exito ! ", " Exito agregando datos. ", "Ok");
                             Application.Current.MainPage = new MainPage();

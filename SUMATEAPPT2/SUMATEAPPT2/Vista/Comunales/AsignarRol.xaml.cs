@@ -16,13 +16,31 @@ namespace SUMATEAPPT2.Vista.Comunales
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AsignarRol : ContentPage
     {
-        public AsignarRol()
+        public AsignarRol(string id,string name)
         {
             InitializeComponent();
+            _ = getRoles();
+            id_user.Text = id;
+            UserName.Text = name;
         }
+         
+        private void PickerRoles_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                var i = (Roles)PickerRoles.SelectedItem;
+                var id = i.id.ToString();
+                id_rol.Text = id.ToString();
+                name_rol.Text = i.rol;
+                bntAddRol.IsVisible = true;
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("", "_" + ex.ToString() + " _ ", "ok");
+            }
 
-
-        private async void getEstados()
+        }
+        private async Task getRoles()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -48,7 +66,7 @@ namespace SUMATEAPPT2.Vista.Comunales
         
                             var result = JsonConvert.DeserializeObject<List<Roles>>(json);
                             PickerRoles.ItemsSource = result;
-                           // PickerRoles.SelectedIndexChanged += PickerEstados_SelectedIndexChanged;
+                            PickerRoles.SelectedIndexChanged += PickerRoles_SelectedIndexChanged;
                         }
                         catch (Exception ex)
                         {

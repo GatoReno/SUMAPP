@@ -6,17 +6,51 @@
              mc:Ignorable="d"
              x:Class="SUMATEAPPT2.Vista.Comunales.AsignarRol">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
+        <StackLayout Margin="10,30,10,10">
+
+            <ActivityIndicator
+                x:Name="Cator"
+                IsVisible="False"
+                IsRunning="False"/>
+
+            <Label Text="Asignar rol de grupo"
+                VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" />
 
+            <Label  
+                VerticalOptions="Center" 
+                   x:Name="UserName"
+                HorizontalOptions="CenterAndExpand" />
+
+            
+            
+
             <Picker x:Name="PickerRoles" 
-                      Title="Eliga un producto" 
+                   VerticalOptions="Center"                      
+                     
+                    Title="Eliga un producto" 
                     ItemsSource="{Binding Roles}"
-                    ItemDisplayBinding="{Binding id}"
-                    SelectedIndex="{Binding rol}"
-                    VerticalOptions="Center"   />
+                    ItemDisplayBinding="{Binding rol}"
+                    SelectedIndex="{Binding id}"
+                      />
+            <Button
+                x:Name="bntAddRol"
+                IsVisible="true"       
+                VerticalOptions="Center"   
+                BackgroundColor="#4E8F75"
+                TextColor="White"
+                Text="Agregar rol"
+                />
+
+            <Label
+                x:Name="name_rol"
+                IsVisible="False"/>
+            <Label
+                x:Name="id_rol"
+                IsVisible="False"/>
+            <Label
+                x:Name="id_user"
+                IsVisible="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

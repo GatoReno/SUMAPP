@@ -88,7 +88,9 @@ namespace SUMATEAPPT2.Vista.Comunales
 
         private async void Rolbtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CartaJurada());
+            var id = idx.Text;
+            var name = nombre.Text;
+            await Navigation.PushAsync(new AsignarRol(id,name));
         }
 
 
