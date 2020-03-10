@@ -125,6 +125,8 @@ namespace SUMATEAPPT2.Vista.Comunales
                         {
                             lbl1.Text = "El rol de este usuario ya existe, debió haber un error, de hacer falta reporte con sistemas";
                             //await Navigation.PopAsync();
+                            bntAddRol.IsVisible = false;
+                                btnRegresar.IsVisible = true;
                         } else if(result.resp == "OK")
                         {
                             await DisplayAlert("Exito",
@@ -152,6 +154,12 @@ namespace SUMATEAPPT2.Vista.Comunales
                     break;
             }
 
+        }
+
+        private async void btnRegresar_Clicked(object sender, EventArgs e)
+        {
+
+            await Navigation.PopAsync();
         }
     }
 }

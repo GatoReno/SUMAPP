@@ -85,7 +85,9 @@ namespace SUMATEAPPT2.Vista.Comunales
 
         private async void btnCartaJurada_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CartaJurada());
+            var id = idx.Text;
+            var idx_ = Int32.Parse(id);
+            await Navigation.PushAsync(new CartaJurada(idx_));
         }
 
         private async void Rolbtn_Clicked(object sender, EventArgs e)

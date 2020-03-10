@@ -55,11 +55,12 @@ namespace SUMATEAPPT2
 
                         if (lnx != null || lty != null)
                         {
-                            var value_check = new Dictionary<string, string>
+                          
+
+                            try
+                            {
+                                var value_check = new Dictionary<string, string>
                          {
-
-
-
                             {"id_documento" , visoff.id_documento.ToString() },
                             { "id_sucursal" , visoff.id_sucursal.ToString() },
                             { "id_cliente" ,  visoff.id_cliente.ToString() },
@@ -96,82 +97,92 @@ namespace SUMATEAPPT2
                             {"lngD", visoff.longitud.ToString() },
 
                 };
-                            var content = new FormUrlEncodedContent(value_check);
-                            var response = await client.PostAsync("http://192.168.90.165:55751/cartas/InsertVisitaApp", content);
-                            switch (response.StatusCode)
+                                var content = new FormUrlEncodedContent(value_check);
+                                var response = await client.PostAsync("http://192.168.90.165:55751/cartas/InsertVisitaApp", content);
+                                switch (response.StatusCode)
+                                {
+                                    case (System.Net.HttpStatusCode.OK):
+                                        if (response.IsSuccessStatusCode)
+                                        {
+
+                                            var xjson = await response.Content.ReadAsStringAsync();
+                                            var json = JsonConvert.DeserializeObject<Cvisita>(xjson);
+
+                                            var idx = json.id_carta;
+
+
+                                            Console.WriteLine(" --------------------------------------- Exito !   Exito agregando datos. ");
+                                            Application.Current.MainPage = new MainPage();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine(" --------------------------------------- Error !  Hubo un error en la insert de datos.  Ok");
+                                        }
+                                        break;
+                                    case (System.Net.HttpStatusCode.Forbidden):
+                                        Console.WriteLine(" --------------------------------------- Error 403  Hubo un error en la insert de datos.  Ok");
+                                        break;
+
+
+                                    case (System.Net.HttpStatusCode.NotFound):
+                                        CrossLocalNotifications.Current.Show("Sumate Actualizado", "Ha habido un problema con el servidor por favor confirme sus datos guardados");
+                                        break;
+
+                                }
+                            }
+                            catch (Exception)
                             {
-                                case (System.Net.HttpStatusCode.OK):
-                                    if (response.IsSuccessStatusCode)
-                                    {
 
-                                        var xjson = await response.Content.ReadAsStringAsync();
-                                        var json = JsonConvert.DeserializeObject<Cvisita>(xjson);
-
-                                        var idx = json.id_carta;
-
-
-
-                                        /*
-                                        var content_img = new MultipartFormDataContent();
-                                        content_img.Add(new StreamContent(imgx.GetStream()), "\"file\"", $"\"{imgx.Path}\"");
-
-                                        var httpClient = new System.Net.Http.HttpClient();
-                                        var url = "http://upload.here.io/folder/subdir";
-                                        var responseMsg = await httpClient.PostAsync(url, content_img);
-
-                                        var remotePath = await responseMsg.Content.ReadAsStringAsync();
-
-                                        */
-
-                                        Console.WriteLine(" --------------------------------------- Exito !   Exito agregando datos. ");
-                                        Application.Current.MainPage = new MainPage();
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine(" --------------------------------------- Error !  Hubo un error en la insert de datos.  Ok");
-                                    }
-                                    break;
-                                case (System.Net.HttpStatusCode.Forbidden):
-                                    Console.WriteLine(" --------------------------------------- Error 403  Hubo un error en la insert de datos.  Ok");
-                                    break;
-
+                                CrossLocalNotifications.Current.Show("Error", "No se encuentra el servidor contacte a sistema");
                             }
 
-                            var value_check_firma = new Dictionary<string, string>
-                         {
-                            {"id_documento" , "11111" },
-                            { "id_testigos" , "11111" },
-                            { "nombre" ,  visoff.cliente },
-                            { "app" ,  "Testing APP" },
-                            { "apm" ,  "Testing APM" },
-                            { "cargo" ,  "Testing CARGO" },
-                            { "firma" ,  visoff.responsable_firma }
+                 
 
-                };
-                            var content_firma = new FormUrlEncodedContent(value_check_firma);
-                            var response_firma = await client.PostAsync("http://192.168.90.165:55751/cartas/InsertFirma64", content_firma);
-                            switch (response_firma.StatusCode)
+                            try
                             {
-                                case (System.Net.HttpStatusCode.OK):
-                                    if (response_firma.IsSuccessStatusCode)
-                                    {
-                                        userDb.DeleteMember_visitas(visoff.id);
-                                        CrossLocalNotifications.Current.Show("Sumate Actualizado", "Los datos que guardaste fuera de linea ya han sido enviados a platadorma");
-                                        Console.WriteLine(" --------------------------------------- Exito !   visita guardada FIRMA off line ya insertada en servidor / agregando datos. ");
+                                var value_check_firma = new Dictionary<string, string>
+                                     {
+                                        {"id_documento" , "11111" },
+                                        { "id_testigos" , "11111" },
+                                        { "nombre" ,  visoff.cliente },
+                                        { "app" ,  "Testing APP" },
+                                        { "apm" ,  "Testing APM" },
+                                        { "cargo" ,  "Testing CARGO" },
+                                        { "firma" ,  visoff.responsable_firma }
 
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine(" --------------------------------------- Error !  Hubo un error en la insert de datos.  Ok");
-                                    }
-                                    break;
-                                case (System.Net.HttpStatusCode.InternalServerError):
-                                    Console.WriteLine(" --------------------------------------- Error 500 !  Hubo un error en la insert de datos.  Ok");
-                                    break;
-                                case (System.Net.HttpStatusCode.Forbidden):
-                                    Console.WriteLine(" --------------------------------------- Error 403 !  Hubo un error en la insert de datos.  Ok");
-                                    break;
+                                      };
+                                var content_firma = new FormUrlEncodedContent(value_check_firma);
+                                var response_firma = await client.PostAsync("http://192.168.90.165:55751/cartas/InsertFirma64", content_firma);
+                                switch (response_firma.StatusCode)
+                                {
+                                    case (System.Net.HttpStatusCode.OK):
+                                        if (response_firma.IsSuccessStatusCode)
+                                        {
+                                            userDb.DeleteMember_visitas(visoff.id);
+                                            CrossLocalNotifications.Current.Show("Sumate Actualizado", "Los datos que guardaste fuera de linea ya han sido enviados a platadorma");
+                                            Console.WriteLine(" --------------------------------------- Exito !   visita guardada FIRMA off line ya insertada en servidor / agregando datos. ");
 
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine(" --------------------------------------- Error !  Hubo un error en la insert de datos.  Ok");
+                                        }
+                                        break;
+                                    case (System.Net.HttpStatusCode.InternalServerError):
+                                        Console.WriteLine(" --------------------------------------- Error 500 !  Hubo un error en la insert de datos.  Ok");
+                                        break;
+                                    case (System.Net.HttpStatusCode.Forbidden):
+                                        Console.WriteLine(" --------------------------------------- Error 403 !  Hubo un error en la insert de datos.  Ok");
+                                        break;
+
+                                }
+
+
+                            }
+                            catch (Exception)
+                            {
+
+                                CrossLocalNotifications.Current.Show("Error", "No se encuentra el servidor contacte a sistema");
                             }
                         }
                         else {
