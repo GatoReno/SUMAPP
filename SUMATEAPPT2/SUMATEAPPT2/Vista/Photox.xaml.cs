@@ -25,30 +25,7 @@ namespace SUMATEAPPT2.Vista
                 await CrossMedia.Current.Initialize();
 
 
-                /*
-                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
-                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync<StoragePermission>();
-
-                if (cameraStatus != PermissionStatus.Granted || storageStatus != PermissionStatus.Granted)
-                {
-                    cameraStatus = await CrossPermissions.Current.RequestPermissionAsync<CameraPermission>();
-                    storageStatus = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
-                }
-
-                if (cameraStatus == PermissionStatus.Granted && storageStatus == PermissionStatus.Granted)
-                {
-                    var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
-                    {
-                        Directory = "Sample",
-                        Name = "test.jpg"
-                    });
-                }
-                else
-                {
-                    await DisplayAlert("Permissions Denied", "Unable to take photos.", "OK");
-                    //On iOS you may want to send your user to the settings screen.
-                    //CrossPermissions.Current.OpenAppSettings();
-                }*/
+              
 
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {

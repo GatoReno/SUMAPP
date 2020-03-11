@@ -25,6 +25,7 @@ namespace SUMATEAPPT2.Vista.Comunales
             _ = GetVisita(id);
             _ = GetCartaJurada(id);
             _ = GetEvaluacionEco(id);
+            _ = GetRolGrupo(id);
             index_prospecto = index_pros;
         }
 
@@ -101,15 +102,20 @@ namespace SUMATEAPPT2.Vista.Comunales
 
         public async Task GetCartaJurada(int id)
         {
-
-            HttpClient client = new HttpClient();
-            var uri = "http://192.168.90.165:55751/cartas/GetCartaJuarda/?id=" + id;
+      
             try
             {
-                var response = await client.GetAsync(uri);
+
+
+                HttpClient client = new HttpClient();
+                var uric = "http://192.168.90.165:55751/Cartas/GetCartaJurada/" + id;
+
+
+                var response = await client.GetAsync(uric);
                 switch (response.StatusCode)
                 {
                     case System.Net.HttpStatusCode.InternalServerError:
+                        await DisplayAlert("Error 500", "Intente mas tarde"  , "ok");
                         Console.WriteLine("----------------------------------------------_____:Here status 500");
 
 
@@ -145,38 +151,33 @@ namespace SUMATEAPPT2.Vista.Comunales
         {
 
             HttpClient client = new HttpClient();
-            var uri = "http://192.168.90.165:55751/cartas/GetVisita/?id=" + id;
-            try
+            var urix = "http://192.168.90.165:55751/cartas/GetVisita/" + id;
+           
+                var response = await client.GetAsync(urix);
+                
+           
+            switch (response.StatusCode)
             {
-                var response = await client.GetAsync(uri);
-                switch (response.StatusCode)
-                {
-                    case System.Net.HttpStatusCode.InternalServerError:
-                        Console.WriteLine("----------------------------------------------_____:Here status 500");
+                case System.Net.HttpStatusCode.InternalServerError:
+                    await DisplayAlert("Error 500", "Intente mas tarde", "ok");
+                    Console.WriteLine("----------------------------------------------_____:Here status 500");
 
 
-                        break;
+                    break;
 
 
-                    case System.Net.HttpStatusCode.OK:
-                        Console.WriteLine("----------------------------------------------_____:Here status 200");
+                case System.Net.HttpStatusCode.OK:
+                    Console.WriteLine("----------------------------------------------_____:Here status 200");
 
-                        HttpContent content = response.Content;
-                        string xjson = await content.ReadAsStringAsync();
-                        if (xjson == "PENDIENTE")
-                        {
-                            Visita_.Text = "Visita Pendiente";
-                        }
- 
-                        break;
+                    HttpContent content = response.Content;
+                    string xjson = await content.ReadAsStringAsync();
+                    if (xjson == "PENDIENTE")
+                    {
+                        Visita_.Text = "Visita Pendiente";
+                    }
 
-                }
-            }
-            catch (Exception ex)
-            {
+                    break;
 
-                await DisplayAlert("", "" + ex.ToString(), "ok");
-                return;
             }
 
         }
@@ -185,14 +186,18 @@ namespace SUMATEAPPT2.Vista.Comunales
         public async Task GetEvaluacionEco(int id)
         {
 
-            HttpClient client = new HttpClient();
-            var uri = "http://192.168.90.165:55751/cartas/GetEdoEvaluacion/?id=" + id;
+           
             try
             {
-                var response = await client.GetAsync(uri);
+
+
+                HttpClient client = new HttpClient();
+                var urie = "http://192.168.90.165:55751/cartas/GetEdoEvaluacion/" + id;
+                var response = await client.GetAsync(urie);
                 switch (response.StatusCode)
                 {
                     case System.Net.HttpStatusCode.InternalServerError:
+                        await DisplayAlert("Error 500", "Intente mas tarde", "ok");
                         Console.WriteLine("----------------------------------------------_____:Here status 500");
 
 
@@ -227,13 +232,14 @@ namespace SUMATEAPPT2.Vista.Comunales
         {
 
             HttpClient client = new HttpClient();
-            var uri = "http://192.168.90.165:55751/configuracion/getprospectorol/?id=" + id;
+            var uri = "http://192.168.90.165:55751/configuracion/getprospectorol/" + id;
             try
             {
                 var response = await client.GetAsync(uri);
                 switch (response.StatusCode)
                 {
                     case System.Net.HttpStatusCode.InternalServerError:
+                        await DisplayAlert("Error 500", "Intente mas tarde", "ok");
                         Console.WriteLine("----------------------------------------------_____:Here status 500");
 
 
@@ -249,7 +255,7 @@ namespace SUMATEAPPT2.Vista.Comunales
 
                         if (json_[0].nombre.Length > 0)
                         {
-                            Role_.Text = json_[0].nombre;
+                            Role_.Text = "Rol en el grupo : "+json_[0].nombre;
                         }
                         else {
 

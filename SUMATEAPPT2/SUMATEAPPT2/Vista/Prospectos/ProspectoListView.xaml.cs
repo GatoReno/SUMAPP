@@ -70,7 +70,7 @@ namespace SUMATEAPPT2.Vista
             }
             catch (Exception ex)
             {
-                await DisplayAlert("", "" + ex.ToString(), "ok");
+                await DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
                 Cator.IsVisible = false;
 
                 CatorText.Text = "Ha habido un error";

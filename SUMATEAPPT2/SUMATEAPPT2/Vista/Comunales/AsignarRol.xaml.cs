@@ -104,55 +104,66 @@ namespace SUMATEAPPT2.Vista.Comunales
                          };
 
             var content = new FormUrlEncodedContent(value_check);
-            var response = await client.PostAsync(uri, content);
-
-            switch (response.StatusCode)
+           
+            try
             {
-                case System.Net.HttpStatusCode.InternalServerError:
-                    Console.WriteLine("----------------------------------------------_____:Here status 500");
-                    break;
+                var response = await client.PostAsync(uri, content);
+                switch (response.StatusCode)
+                {
+                    case System.Net.HttpStatusCode.InternalServerError:
+                        Console.WriteLine("----------------------------------------------_____:Here status 500");
+                        break;
 
-                case System.Net.HttpStatusCode.OK:
-                    Console.WriteLine("----------------------------------------------_____:Here status 200");
-                    try
-                    {
-                        HttpContent content_ = response.Content;                 
-                        var json = await content_.ReadAsStringAsync();
-
-                        var result = JsonConvert.DeserializeObject<RespSimple>(json);
-
-                        if (result.resp == "Ya existente")
+                    case System.Net.HttpStatusCode.OK:
+                        Console.WriteLine("----------------------------------------------_____:Here status 200");
+                        try
                         {
-                            lbl1.Text = "El rol de este usuario ya existe, debió haber un error, de hacer falta reporte con sistemas";
-                            //await Navigation.PopAsync();
-                            bntAddRol.IsVisible = false;
+                            HttpContent content_ = response.Content;
+                            var json = await content_.ReadAsStringAsync();
+
+                            var result = JsonConvert.DeserializeObject<RespSimple>(json);
+
+                            if (result.resp == "Ya existente")
+                            {
+                                lbl1.Text = "El rol de este usuario ya existe, debió haber un error, de hacer falta reporte con sistemas";
+                                //await Navigation.PopAsync();
+                                bntAddRol.IsVisible = false;
                                 btnRegresar.IsVisible = true;
-                        } else if(result.resp == "OK")
+                            }
+                            else if (result.resp == "OK")
+                            {
+                                await DisplayAlert("Exito",
+                                      "Rol asignado a usuario con éxito", "ok");
+                                await Navigation.PopAsync();
+                            }
+                            else
+                            {
+                                await DisplayAlert("Posible Error",
+                                    "Pudo haber un error , por favor confirme en portal web", "ok");
+
+                            }
+
+                            Cator.IsRunning = false;
+                            Cator.IsVisible = false;
+
+                        }
+                        catch (Exception ex)
                         {
-                            await DisplayAlert("Exito",
-                                  "Rol asignado a usuario con éxito", "ok");
-                            await Navigation.PopAsync();
+                            var x = ex.ToString();
+                            await DisplayAlert("", "" + ex.ToString(), "ok");
+                            Cator.IsRunning = false;
+                            Cator.IsVisible = false;
+                            return;
                         }
-                        else {
-                            await DisplayAlert("Posible Error",
-                                "Pudo haber un error , por favor confirme en portal web", "ok");
-
-                        }
-                        
-                        Cator.IsRunning = false;
-                        Cator.IsVisible = false;
-
-                    }
-                    catch (Exception ex)
-                    {                        
-                        var x = ex.ToString();
-                        await DisplayAlert("", "" + ex.ToString(), "ok");
-                        Cator.IsRunning = false;
-                        Cator.IsVisible = false;
-                        return;
-                    }
-                    break;
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+
+                await DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
+            }
+      
 
         }
 

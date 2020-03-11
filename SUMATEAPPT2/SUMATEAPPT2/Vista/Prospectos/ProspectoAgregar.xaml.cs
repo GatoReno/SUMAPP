@@ -33,42 +33,52 @@ namespace SUMATEAPPT2.Vista
                 var request = new HttpRequestMessage();
                 request.RequestUri = new Uri(uri);
                 var client = new HttpClient();
-                HttpResponseMessage response = await client.SendAsync(request);
 
-                switch (response.StatusCode)
+                try
                 {
-                    case System.Net.HttpStatusCode.InternalServerError:
-                        Console.WriteLine("----------------------------------------------_____:Here status 500");
-                        break;
-                    case System.Net.HttpStatusCode.OK:
-                        Console.WriteLine("----------------------------------------------_____:Here status 200");
-                        try
-                        {
-                            HttpContent content = response.Content;
-                            PickerColonias.TextColor = Color.FromHex("#4E8F75");
-                            PickerColonias.TitleColor = Color.FromHex("#4E8F75");
-                            var json = await content.ReadAsStringAsync();
+                    HttpResponseMessage response = await client.SendAsync(request);
+
+                    switch (response.StatusCode)
+                    {
+                        case System.Net.HttpStatusCode.InternalServerError:
+                            Console.WriteLine("----------------------------------------------_____:Here status 500");
+                            break;
+                        case System.Net.HttpStatusCode.OK:
+                            Console.WriteLine("----------------------------------------------_____:Here status 200");
+                            try
+                            {
+                                HttpContent content = response.Content;
+                                PickerColonias.TextColor = Color.FromHex("#4E8F75");
+                                PickerColonias.TitleColor = Color.FromHex("#4E8F75");
+                                var json = await content.ReadAsStringAsync();
 
 
-                            var result = JsonConvert.DeserializeObject<Estados>(json);
-                            PickerColonias.ItemsSource = result.Table;
-                            PickerColonias.IsVisible = true;
-                            PickerColonias.SelectedIndexChanged += PickerColonias_SelectedIndexChanged;
+                                var result = JsonConvert.DeserializeObject<Estados>(json);
+                                PickerColonias.ItemsSource = result.Table;
+                                PickerColonias.IsVisible = true;
+                                PickerColonias.SelectedIndexChanged += PickerColonias_SelectedIndexChanged;
 
 
-                        }
-                        catch (Exception ex)
-                        {
-                            await DisplayAlert("", "" + ex.ToString(), "ok");
-                            var x = ex.ToString();
-                            return;
-                        }
-                        break;
-                    case System.Net.HttpStatusCode.NotFound:
+                            }
+                            catch (Exception ex)
+                            {
+                                await DisplayAlert("", "" + ex.ToString(), "ok");
+                                var x = ex.ToString();
+                                return;
+                            }
+                            break;
+                        case System.Net.HttpStatusCode.NotFound:
 
-                        await DisplayAlert("error 404", "servidor no encontrado ", "ok");
-                        break;
+                            await DisplayAlert("error 404", "servidor no encontrado ", "ok");
+                            break;
+                    }
                 }
+                catch (Exception ex)
+                {
+
+                    await DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
+                }
+              
             }
         }
         private async void getMunicipios(string id_estado)
@@ -80,42 +90,53 @@ namespace SUMATEAPPT2.Vista
                 var request = new HttpRequestMessage();
                 request.RequestUri = new Uri(uri);
                 var client = new HttpClient();
-                HttpResponseMessage response = await client.SendAsync(request);
+                
 
-                switch (response.StatusCode)
+                try
                 {
-                    case System.Net.HttpStatusCode.InternalServerError:
-                        Console.WriteLine("----------------------------------------------_____:Here status 500");
-                        break;
-                    case System.Net.HttpStatusCode.OK:
-                        Console.WriteLine("----------------------------------------------_____:Here status 200");
-                        try
-                        {
-                            HttpContent content = response.Content;
-                            PickerMunicipios.TextColor = Color.FromHex("#4E8F75");
-                            PickerMunicipios.TitleColor = Color.FromHex("#4E8F75");
-                            var json = await content.ReadAsStringAsync();
+                    HttpResponseMessage response = await client.SendAsync(request);
 
-                            var result = JsonConvert.DeserializeObject<Estados>(json);
-                            PickerMunicipios.ItemsSource = result.Table;
-                            // PickerEstados.SelectedIndexChanged += PickerEstados_SelectedIndexChanged;
+                    switch (response.StatusCode)
+                    {
+                        case System.Net.HttpStatusCode.InternalServerError:
+                            Console.WriteLine("----------------------------------------------_____:Here status 500");
+                            break;
+                        case System.Net.HttpStatusCode.OK:
+                            Console.WriteLine("----------------------------------------------_____:Here status 200");
+                            try
+                            {
+                                HttpContent content = response.Content;
+                                PickerMunicipios.TextColor = Color.FromHex("#4E8F75");
+                                PickerMunicipios.TitleColor = Color.FromHex("#4E8F75");
+                                var json = await content.ReadAsStringAsync();
 
-                            PickerMunicipios.IsVisible = true;
-                            PickerMunicipios.SelectedIndexChanged += PickerMunicipios_SelectedIndexChanged;
+                                var result = JsonConvert.DeserializeObject<Estados>(json);
+                                PickerMunicipios.ItemsSource = result.Table;
+                                // PickerEstados.SelectedIndexChanged += PickerEstados_SelectedIndexChanged;
 
-                        }
-                        catch (Exception ex)
-                        {
-                            await DisplayAlert("", "" + ex.ToString(), "ok");
-                            var x = ex.ToString();
-                            return;
-                        }
-                        break;
-                    case System.Net.HttpStatusCode.NotFound:
+                                PickerMunicipios.IsVisible = true;
+                                PickerMunicipios.SelectedIndexChanged += PickerMunicipios_SelectedIndexChanged;
 
-                        await DisplayAlert("error 404", "servidor no encontrado ", "ok");
-                        break;
+                            }
+                            catch (Exception ex)
+                            {
+                                await DisplayAlert("", "" + ex.ToString(), "ok");
+                                var x = ex.ToString();
+                                return;
+                            }
+                            break;
+                        case System.Net.HttpStatusCode.NotFound:
+
+                            await DisplayAlert("error 404", "servidor no encontrado ", "ok");
+                            break;
+                    }
                 }
+                catch (Exception ex)
+                {
+
+                    await DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
+                }
+
             }
 
         }
@@ -127,43 +148,54 @@ namespace SUMATEAPPT2.Vista
                 var request = new HttpRequestMessage();
                 request.RequestUri = new Uri(uri);
                 var client = new HttpClient();
-                HttpResponseMessage response = await client.SendAsync(request);
+               
 
-                switch (response.StatusCode)
+
+                try
                 {
-                    case System.Net.HttpStatusCode.InternalServerError:
-                        Console.WriteLine("----------------------------------------------_____:Here status 500");
+                    HttpResponseMessage response = await client.SendAsync(request);
+
+                    switch (response.StatusCode)
+                    {
+                        case System.Net.HttpStatusCode.InternalServerError:
+                            Console.WriteLine("----------------------------------------------_____:Here status 500");
 
 
-                        break;
-                    case System.Net.HttpStatusCode.OK:
-                        Console.WriteLine("----------------------------------------------_____:Here status 200");
+                            break;
+                        case System.Net.HttpStatusCode.OK:
+                            Console.WriteLine("----------------------------------------------_____:Here status 200");
 
-                        try
-                        {
-                            HttpContent content = response.Content;
-                            string xjson = await content.ReadAsStringAsync();
+                            try
+                            {
+                                HttpContent content = response.Content;
+                                string xjson = await content.ReadAsStringAsync();
 
-                            PickerProductos.TextColor = Color.FromHex("#4E8F75");
-                            PickerProductos.TitleColor = Color.FromHex("#4E8F75");
+                                PickerProductos.TextColor = Color.FromHex("#4E8F75");
+                                PickerProductos.TitleColor = Color.FromHex("#4E8F75");
 
-                            var result = JsonConvert.DeserializeObject<Estados>(xjson);
-                            PickerProductos.ItemsSource = result.Table;
-                            PickerProductos.SelectedIndexChanged += PickerProductos_SelectedIndexChanged;
+                                var result = JsonConvert.DeserializeObject<Estados>(xjson);
+                                PickerProductos.ItemsSource = result.Table;
+                                PickerProductos.SelectedIndexChanged += PickerProductos_SelectedIndexChanged;
 
-                        }
-                        catch (Exception ex)
-                        {
-                            await DisplayAlert("", "" + ex.ToString(), "ok");
-                            var x = ex.ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                await DisplayAlert("", "" + ex.ToString(), "ok");
+                                var x = ex.ToString();
 
-                            return;
-                        }
-                        break;
-                    case System.Net.HttpStatusCode.NotFound:
+                                return;
+                            }
+                            break;
+                        case System.Net.HttpStatusCode.NotFound:
 
-                        await DisplayAlert("error 404", "servidor no encontrado ", "ok");
-                        break;
+                            await DisplayAlert("error 404", "servidor no encontrado ", "ok");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    await DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
                 }
             }
         }
@@ -175,41 +207,51 @@ namespace SUMATEAPPT2.Vista
                 var request = new HttpRequestMessage();
                 request.RequestUri = new Uri(uri);
                 var client = new HttpClient();
-                HttpResponseMessage response = await client.SendAsync(request);
+               
 
-                switch (response.StatusCode)
+                try
                 {
-                    case System.Net.HttpStatusCode.InternalServerError:
-                        Console.WriteLine("----------------------------------------------_____:Here status 500");
-                        break;
-                    case System.Net.HttpStatusCode.OK:
-                        Console.WriteLine("----------------------------------------------_____:Here status 200");
-                        try
-                        {
-                            HttpContent content = response.Content;
-                            PickerEstados.TextColor = Color.FromHex("#4E8F75");
-                            PickerEstados.TitleColor = Color.FromHex("#4E8F75");
-                            var json = await content.ReadAsStringAsync();
-                            /*
-                            var json = JsonConvert.DeserializeObject<Estados>(xjson);
-                            var json_ = json.Table;foreach (var item in json_)
-                             {PickerEstados.Items.Add(item.ESTADO.ToString() + "_" +item.CLAVE_E);PickerEstados.SelectedIndex = item.CLAVE_E;}*/
-                            // PickerEstados.SelectedIndexChanged += PickerEstados_SelectedIndexChanged;
-                            var result = JsonConvert.DeserializeObject<Estados>(json);
-                            PickerEstados.ItemsSource = result.Table;
-                            PickerEstados.SelectedIndexChanged += PickerEstados_SelectedIndexChanged;
-                        }
-                        catch (Exception ex)
-                        {
-                            await DisplayAlert("", "" + ex.ToString(), "ok");
-                            var x = ex.ToString();
-                            return;
-                        }
-                        break;
-                    case System.Net.HttpStatusCode.NotFound:
+                    HttpResponseMessage response = await client.SendAsync(request);
 
-                        await DisplayAlert("error 404", "servidor no encontrado ", "ok");
-                        break;
+                    switch (response.StatusCode)
+                    {
+                        case System.Net.HttpStatusCode.InternalServerError:
+                            Console.WriteLine("----------------------------------------------_____:Here status 500");
+                            break;
+                        case System.Net.HttpStatusCode.OK:
+                            Console.WriteLine("----------------------------------------------_____:Here status 200");
+                            try
+                            {
+                                HttpContent content = response.Content;
+                                PickerEstados.TextColor = Color.FromHex("#4E8F75");
+                                PickerEstados.TitleColor = Color.FromHex("#4E8F75");
+                                var json = await content.ReadAsStringAsync();
+                                /*
+                                var json = JsonConvert.DeserializeObject<Estados>(xjson);
+                                var json_ = json.Table;foreach (var item in json_)
+                                 {PickerEstados.Items.Add(item.ESTADO.ToString() + "_" +item.CLAVE_E);PickerEstados.SelectedIndex = item.CLAVE_E;}*/
+                                // PickerEstados.SelectedIndexChanged += PickerEstados_SelectedIndexChanged;
+                                var result = JsonConvert.DeserializeObject<Estados>(json);
+                                PickerEstados.ItemsSource = result.Table;
+                                PickerEstados.SelectedIndexChanged += PickerEstados_SelectedIndexChanged;
+                            }
+                            catch (Exception ex)
+                            {
+                                await DisplayAlert("", "" + ex.ToString(), "ok");
+                                var x = ex.ToString();
+                                return;
+                            }
+                            break;
+                        case System.Net.HttpStatusCode.NotFound:
+
+                            await DisplayAlert("error 404", "servidor no encontrado ", "ok");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    await DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
                 }
             }
 
@@ -227,7 +269,7 @@ namespace SUMATEAPPT2.Vista
             }
             catch (Exception ex)
             {
-                DisplayAlert("", "_" + ex.ToString() + " _ ", "ok");
+                  DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
             }
 
         }
@@ -245,7 +287,7 @@ namespace SUMATEAPPT2.Vista
             }
             catch (Exception ex)
             {
-                DisplayAlert("", "_" + ex.ToString() + " _ ", "ok");
+                  DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
             }
         }
         private void PickerColonias_SelectedIndexChanged(System.Object sender, System.EventArgs e)
@@ -264,7 +306,7 @@ namespace SUMATEAPPT2.Vista
             }
             catch (Exception ex)
             {
-                DisplayAlert("", "_" + ex.ToString() + " _ ", "ok");
+                  DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
             }
 
         }
@@ -281,7 +323,7 @@ namespace SUMATEAPPT2.Vista
             }
             catch (Exception ex)
             {
-                DisplayAlert("", "_" + ex.ToString() + " _ ", "ok");
+                  DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
             }
         }
         private async void Button_Clicked(object sender, EventArgs e)
@@ -326,105 +368,32 @@ namespace SUMATEAPPT2.Vista
            
 
             var content = new FormUrlEncodedContent(value_check);
-            var response = await client.PostAsync("http://192.168.90.165:55751/promocion/InsertProspecto", content);
-
-            switch (response.StatusCode)
+          
+            try
             {
-                case System.Net.HttpStatusCode.Accepted:
-                    break;
-                case System.Net.HttpStatusCode.Ambiguous:
-                    break;
-                case System.Net.HttpStatusCode.BadGateway:
-                    break;
-                case System.Net.HttpStatusCode.BadRequest:
-                    break;
-                case System.Net.HttpStatusCode.Conflict:
-                    break;
-                case System.Net.HttpStatusCode.Continue:
-                    break;
-                case System.Net.HttpStatusCode.Created:
-                    break;
-                case System.Net.HttpStatusCode.ExpectationFailed:
-                    break;
-                case System.Net.HttpStatusCode.Forbidden:
-                    break;
-                case System.Net.HttpStatusCode.Found:
-                    break;
-                case System.Net.HttpStatusCode.GatewayTimeout:
-                    break;
-                case System.Net.HttpStatusCode.Gone:
-                    break;
-                case System.Net.HttpStatusCode.HttpVersionNotSupported:
-                    break;
-                case System.Net.HttpStatusCode.InternalServerError:
-                    break;
-                case System.Net.HttpStatusCode.LengthRequired:
-                    break;
-                case System.Net.HttpStatusCode.MethodNotAllowed:
-                    break;
-                case System.Net.HttpStatusCode.Moved:
-                    break;
-                
-                case System.Net.HttpStatusCode.NoContent:
-                    break;
-                case System.Net.HttpStatusCode.NonAuthoritativeInformation:
-                    break;
-                case System.Net.HttpStatusCode.NotAcceptable:
-                    break;
-                case System.Net.HttpStatusCode.NotFound:
-                    break;
-                case System.Net.HttpStatusCode.NotImplemented:
-                    break;
-                case System.Net.HttpStatusCode.NotModified:
-                    break;
-                case System.Net.HttpStatusCode.OK:
-                    await DisplayAlert("Prospecto Guardado ! ", "Cita agendada con éxito ", "Ok");
-                    Application.Current.MainPage = new MainPage();
+                var response = await client.PostAsync("http://192.168.90.165:55751/promocion/InsertProspecto", content);
 
-                    break;
-                case System.Net.HttpStatusCode.PartialContent:
-                    break;
-                case System.Net.HttpStatusCode.PaymentRequired:
-                    break;
-                case System.Net.HttpStatusCode.PreconditionFailed:
-                    break;
-                case System.Net.HttpStatusCode.ProxyAuthenticationRequired:
-                    break;
+                switch (response.StatusCode)
+                {
  
-                case System.Net.HttpStatusCode.RedirectKeepVerb:
-                    break;
-                case System.Net.HttpStatusCode.RedirectMethod:
-                    break;
-                case System.Net.HttpStatusCode.RequestedRangeNotSatisfiable:
-                    break;
-                case System.Net.HttpStatusCode.RequestEntityTooLarge:
-                    break;
-                case System.Net.HttpStatusCode.RequestTimeout:
-                    break;
-                case System.Net.HttpStatusCode.RequestUriTooLong:
-                    break;
-                case System.Net.HttpStatusCode.ResetContent:
-                    break;
- 
-                case System.Net.HttpStatusCode.ServiceUnavailable:
-                    break;
-                case System.Net.HttpStatusCode.SwitchingProtocols:
-                    break;
- 
-                case System.Net.HttpStatusCode.Unauthorized:
-                    break;
-                case System.Net.HttpStatusCode.UnsupportedMediaType:
-                    break;
-                case System.Net.HttpStatusCode.Unused:
-                    break;
-                case System.Net.HttpStatusCode.UpgradeRequired:
-                    break;
-                case System.Net.HttpStatusCode.UseProxy:
-                    break;
-                default:
-                    await DisplayAlert("Error! ", "Parece que se produjo un error. ", "Ok");
+                    case System.Net.HttpStatusCode.OK:
+                        await DisplayAlert("Prospecto Guardado ! ", "Cita agendada con éxito ", "Ok");
+                        Application.Current.MainPage = new MainPage();
 
-                    break;
+                        break;
+ 
+                    default:
+                        await DisplayAlert("Error! ", "Parece que se produjo un error. ", "Ok");
+
+                        break;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                await DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
             }
         }
     }

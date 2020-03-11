@@ -68,48 +68,60 @@ namespace SUMATEAPPT2.Vista
                             {"passw" , xpass }
                          };
 
-                    var content = new FormUrlEncodedContent(value_check);
-                    var response = await client.PostAsync(uri, content);
-
-
-                    switch (response.StatusCode)
+                    try
                     {
-                        case (System.Net.HttpStatusCode.OK):
+                        var content = new FormUrlEncodedContent(value_check);
+                        var response = await client.PostAsync(uri, content);
 
-                            try
-                            {
-                                HttpContent resp_content = response.Content;
 
-                                var json = await resp_content.ReadAsStringAsync();
-                                var userResult = JsonConvert.DeserializeObject<List<UserFS>>(json);
-                                if (userResult[0].Mensaje == "Error al Iniciar Sesión")
+                        switch (response.StatusCode)
+                        {
+                            case (System.Net.HttpStatusCode.OK):
+
+                                try
                                 {
-                                    User.Focus();
-                                    Pass.Focus();
-                                    Errormsn.IsVisible = true;
-                                    Errormsn.Text = "Usuario o contraseña invalidos"; 
+                                    HttpContent resp_content = response.Content;
+
+                                    var json = await resp_content.ReadAsStringAsync();
+                                    var userResult = JsonConvert.DeserializeObject<List<UserFS>>(json);
+                                    if (userResult[0].Mensaje == "Error al Iniciar Sesión")
+                                    {
+                                        User.Focus();
+                                        Pass.Focus();
+                                        Errormsn.IsVisible = true;
+                                        Errormsn.Text = "Usuario o contraseña invalidos";
+                                    }
+                                    else
+                                    {
+                                        var userFS = new UserFS();
+                                        userFS.Nombre = xn;
+                                        userFS.Email = userResult[0].Email;
+                                        userFS.Id = userResult[0].Id;
+                                        userFS.Sucursal = userResult[0].Sucursal;
+                                        UserDb.AddMember(userFS);
+                                        Application.Current.MainPage = new MainPage();
+
+                                    }
                                 }
-                                else
+                                catch (Exception ex)
                                 {
-                                    var userFS = new UserFS();
-                                    userFS.Nombre = xn;
-                                    userFS.Email = userResult[0].Email;
-                                    userFS.Id = userResult[0].Id;
-                                    userFS.Sucursal = userResult[0].Sucursal;
-                                    UserDb.AddMember(userFS);
-                                    Application.Current.MainPage = new MainPage();
-                                
+                                    await DisplayAlert("", "" + ex.ToString(), "ok");
+                                    var x = ex.ToString();
                                 }
-                            }
-                            catch (Exception ex)
-                            {
-                                await DisplayAlert("", "" + ex.ToString(), "ok");
-                                var x = ex.ToString();
-                            }
-                          
-                            break;
+
+                                break;
+                        }
+
                     }
-
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert("Error", "Intente en otro momento _ error: " + ex.ToString() + " _ ", "ok");
+                        Cator.IsVisible = false;
+                        Pass.Focus();
+                        Errormsn.IsVisible = true;
+                         Errormsn.Text = "Ha habido un error";
+                        return;
+                    }
                     Cator.IsVisible = false;
                     Loginbtn.IsVisible = true;
 
